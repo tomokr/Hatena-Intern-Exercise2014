@@ -2,14 +2,15 @@
 function parseLTSVLog(logStr){
 	logar = logStr.split("\n");
 	var datar = [];
+
 	for(i=0;i<(logar.length-1);i++){ //一番最後の\n対策
-	res = logar[i].split("\t");
-	paths = res[0].split(":");
-	rt = res[1].split(":");
-	var data ={};
-	data.path = paths[1];
-	data.reqtime_microsec = parseInt(rt[1]);
-	datar.push(data);
+		res = logar[i].split("\t");
+		paths = res[0].split(":");
+		rt = res[1].split(":");
+		var data ={};
+		data.path = paths[1];
+		data.reqtime_microsec = parseInt(rt[1]);
+		datar.push(data);
 	}
 
 	return datar;
