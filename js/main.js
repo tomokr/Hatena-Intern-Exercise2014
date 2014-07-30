@@ -17,18 +17,41 @@ function parseLTSVLog(logStr){
 }
 
 // 課題 JS-2: 関数 `createLogTable` を記述してください
-/*function createLogTable(containerElem,array){
+function createLogTable(containerElem,array){
 	
-	var childtext;
-	childtext = "<thead><tr><th>path</th><th>reqtime_microsec</th></tr></thead><tbody>";
-	for(i=0;i<array.count;i++){
-		childtext = childtext+"<tr><td>"+(ar[i]).path+"</td><td>"+(ar[i]).reqtime_microsec+"</td></tr>";
-	}
-
-	childtext = childtext+"</tbody>";
-
-	var child = containerElem.createElement("table");
-	child.textContent = childtext;
-	containerElem.appentChild(child);
-
-}*/
+	var table_ele = document.createElement("table");
+	containerElem.appendChild(table_ele);
+	
+	//ヘッダー行
+	var thead_ele = document.createElement("thead");
+	table_ele.appendChild(thead_ele);
+	
+	var tr_ele = document.createElement("tr");
+	thead_ele.appendChild(tr_ele);
+	
+	var th1_ele = document.createElement("th");
+	th1_ele.textContent = "path";
+	tr_ele.appendChild(th1_ele);
+	
+	var th2_ele = document.createElement("th");
+	th2_ele.textContent = "reqtime_microsec";
+	tr_ele.appendChild(th2_ele);
+		
+	//データ行
+	var tbody_ele = document.createElement("tbody");
+	table_ele.appendChild(tbody_ele);
+	
+	for(i=0;i<array.length;i++){
+		var tr_ele = document.createElement("tr");
+		tbody_ele.appendChild(tr_ele);
+		
+		var td1_ele = document.createElement("td");
+		td1_ele.textContent = (array[i]).path;
+		tr_ele.appendChild(td1_ele);
+		
+		var td2_ele = document.createElement("td");
+		td2_ele.textContent = (array[i]).reqtime_microsec;
+		tr_ele.appendChild(td2_ele);
+	}				
+			
+}
