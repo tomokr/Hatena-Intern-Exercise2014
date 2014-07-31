@@ -1,3 +1,4 @@
+#! /usr/bin/perl
 use strict;
 use warnings;
 
@@ -17,3 +18,4 @@ print $log->path . "\n";
 print $log->protocol . "\n";
 print $log->uri . "\n";
 print $log->time . "\n";
+
