@@ -17,82 +17,79 @@ sub new {
 	
 	};
 	bless ($self, $class);
-    return bless \%args, $class;
+	return bless \%args, $class;
 }
 
- sub epoch {
-        my $self = shift;
-        if (@_) { $self->{epoch} = shift }
-        return $self->{epoch};
-    }
+sub epoch {
+		my $self = shift;
+		if (@_) { $self->{epoch} = shift }
+		return $self->{epoch};
+}
 	
-	 sub req {
-        my $self = shift;
-        if (@_) { $self->{req} = shift }
-        return $self->{req};
-    }
+sub req {
+		my $self = shift;
+		if (@_) { $self->{req} = shift }
+		return $self->{req};
+}
 	
-	 sub status {
-        my $self = shift;
-        if (@_) { $self->{status} = shift }
-        return $self->{status};
-    }
+sub status {
+		my $self = shift;
+		if (@_) { $self->{status} = shift }
+		return $self->{status};
+}
 	
-	 sub user {
-        my $self = shift;
-        if (@_) { $self->{user} = shift }
-        return $self->{user};
-    }
+sub user {
+		my $self = shift;
+		if (@_) { $self->{user} = shift }
+		return $self->{user};
+}
 	
-	 sub referer {
-        my $self = shift;
-        if (@_) { $self->{referer} = shift }
-        return $self->{referer};
-    }
+sub referer {
+		my $self = shift;
+		if (@_) { $self->{referer} = shift }
+		return $self->{referer};
+}
 	
-	 sub size {
-        my $self = shift;
-        if (@_) { $self->{size} = shift }
-        return $self->{size};
-    }
+sub size {
+		my $self = shift;
+		if (@_) { $self->{size} = shift }
+		return $self->{size};
+}
 	
-	 sub host {
-        my $self = shift;
-        if (@_) { $self->{host} = shift }
-        return $self->{host};
-    }
+sub host {
+		my $self = shift;
+		if (@_) { $self->{host} = shift }
+		return $self->{host};
+}
 
- sub method{
+sub method{
 		my $self = shift;
 		my @req_ar = split(/ /, $self->{req});
 		return $req_ar[0];
-    }
+}
 	
 	
-   sub path{
+sub path{
         my $self = shift;
 		my @req_ar = split(/ /, $self->{req});
 		return $req_ar[1];
-        
-    }
-    
-    sub protocol{
-        my $self = shift;
+}
+
+sub protocol{
+		my $self = shift;
 		my @req_ar = split(/ /, $self->{req});
 		return $req_ar[2];
-        
-    }
-    
-    sub uri{
-         my $self = shift;
+}
+
+sub uri{
+		my $self = shift;
 		my @req_ar = split(/ /, $self->{req});
 		my @pro_ar = split('/', $req_ar[2]);
 		return lc($pro_ar[0])."://".$self->{host}.$req_ar[1];
-        
-    }
-    
-    sub time{
-        my ($self, $filename) = @_;
+}
+
+sub time{
+		my ($self, $filename) = @_;
 		my $ep_time = $self->{epoch}; 
 		my ($sec, $min, $hour, $mday, $mon, $year, $wday, $yday, $isdst) = localtime($ep_time);
 		my $mod_year = $year + 1900;
@@ -103,7 +100,6 @@ sub new {
 		my $mod_sec = sprintf("%02d",$sec);
 		my $timestr = "$mod_year-$mod_mon-${mod_day}T$mod_hour:$mod_min:$mod_sec";
 		return $timestr;
-        
-    }
+}
 
 1;
