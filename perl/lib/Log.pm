@@ -6,12 +6,64 @@ $ENV{'TZ'}= "GMT+0";
 
 sub new {
     my ($class, %args) = @_;
+	my $self = {
+		'epoch' => '',
+		'req' => '',
+		'status' => '',
+		'user' => '',
+ 		'referer' => '',
+		'size' => '',
+		'host' =>'',
+	
+	};
+	bless ($self, $class);
     return bless \%args, $class;
 }
 
+ sub epoch {
+        my $self = shift;
+        if (@_) { $self->{epoch} = shift }
+        return $self->{epoch};
+    }
+	
+	 sub req {
+        my $self = shift;
+        if (@_) { $self->{req} = shift }
+        return $self->{req};
+    }
+	
+	 sub status {
+        my $self = shift;
+        if (@_) { $self->{status} = shift }
+        return $self->{status};
+    }
+	
+	 sub user {
+        my $self = shift;
+        if (@_) { $self->{user} = shift }
+        return $self->{user};
+    }
+	
+	 sub referer {
+        my $self = shift;
+        if (@_) { $self->{referer} = shift }
+        return $self->{referer};
+    }
+	
+	 sub size {
+        my $self = shift;
+        if (@_) { $self->{size} = shift }
+        return $self->{size};
+    }
+	
+	 sub host {
+        my $self = shift;
+        if (@_) { $self->{host} = shift }
+        return $self->{host};
+    }
+
  sub method{
 		my $self = shift;
-		
 		my @req_ar = split(/ /, $self->{req});
 		return $req_ar[0];
     }
