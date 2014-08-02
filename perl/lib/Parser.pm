@@ -15,7 +15,8 @@ sub parse {
 	my @lines = <$fh>;
 	foreach my $line(@lines){#1つずつのデータに対するループ
 	my $log = Log->new();
-	$line =~ s/http:/httpc/;  #URL内の:を"c"に変換 謎の改行？？
+	$line =~ s/http:/httpc/;  #URL内の:を"c"に変換
+	chomp($line); #行末の改行をとりはらう
 	my @line_ar = split(/\t/, $line);
 	my %log_ar = map{(split(/:/,$_))[0]=>(split(/:/,$_))[1]}@line_ar;
 	$log_ar{"referer"} =~ s/httpc/http:/;
