@@ -8,7 +8,8 @@ sub new {
     my ($class, %args) = @_;
 	my $self = {
 		'epoch' => '',
-		'req' => '',
+		'method' => '',
+		'path' => '',
 		'status' => '',
 		'user' => '',
  		'referer' => '',
@@ -27,10 +28,22 @@ sub epoch {
 		return $self->{epoch};
 }
 
-sub req {
+sub path {
 		my $self = shift;
-		if (@_) { $self->{req} = shift }
-		return $self->{req};
+		if (@_) { $self->{path} = shift }
+		return $self->{path};
+}
+
+sub method {
+		my $self = shift;
+		if (@_) { $self->{method} = shift }
+		return $self->{method};
+}
+
+sub reqtime_microsec {
+		my $self = shift;
+		if (@_) { $self->{reqtime_microsec} = shift }
+		return $self->{reqtime_microsec};
 }
 
 sub status {
@@ -63,18 +76,18 @@ sub host {
 		return $self->{host};
 }
 
-sub method{
-		my $self = shift;
-		my @req_ar = split(/ /, $self->{req});
-		return $req_ar[0];
-}
+# sub method{
+# 		my $self = shift;
+# 		my @req_ar = split(/ /, $self->{req});
+# 		return $req_ar[0];
+# }
 
 
-sub path{
-        my $self = shift;
-		my @req_ar = split(/ /, $self->{req});
-		return $req_ar[1];
-}
+# sub path{
+#         my $self = shift;
+# 		my @req_ar = split(/ /, $self->{req});
+# 		return $req_ar[1];
+# }
 
 sub protocol{
 		my $self = shift;
