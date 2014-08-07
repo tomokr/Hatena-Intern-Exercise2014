@@ -11,7 +11,7 @@ sub new {
 sub parse {
 
 	my @parsed_log = ();
-	open my $fh, '<', 'log2.ltsv' or die $!;
+	open my $fh, '<', 'log.ltsv' or die $!;
 	my @lines = <$fh>;
 	foreach my $line(@lines){#1つずつのデータに対するループ
 	my $log = Log->new();
